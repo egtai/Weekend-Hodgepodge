@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>我的清单</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <h1>Todo List</h1>
-    <div id="app"></div>
+    <div class="container">
+        <h1>我的待办清单</h1>
+        <div id="app"></div>
     </div>
     <script src="https://unpkg.com/vue@2.5.3/dist/vue.min.js"></script>
     <script src="https://unpkg.com/vuex@3.0.1/dist/vuex.min.js"></script>
+
+    <template id="todo-list">
+        <ul class="tasks">
+            <li v-for="todo in todos" :class="{completed: todo.completed}" class="task" @click="toggleTodo(todo.id)"
+                @dblclick="deleteTodo(todo.id)">{{todo.task}}</li>
+        </ul>
+    </template>
+    
+    
+    <template id="app-template">
+        <div>
+            <form @submit.prevent="addTodo">
+                <input class="todo-input" type="text" placeholder="输入新的任务" v-model="task" />
+            </form>
+            <todo-list />
+        </div>
+    </template>
+
     <script src="app.js"></script>
 </body>
 </html>
