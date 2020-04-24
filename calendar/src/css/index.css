@@ -3,11 +3,18 @@
 	padding: 0;
 }
 
+.calendar{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	height: 700px;
+	width: 100%;
+}
+
 #wrapper{
 	width: 800px;
-	height: 100%;
-	margin: 0 auto;
-	border: 1px solid red;
+	height: 280px;
 }
 
 #wrapper::after{
@@ -24,9 +31,9 @@
 }
 
 td{
-	width: 33px;
-    height: 22px;
-
+	width: 50px;
+    height: 50px;
+    text-align: center;
 }
 
 span{
@@ -35,6 +42,7 @@ span{
 }
 
 #lhead,#rhead{
-	background-color: blue;
+	background-color: rgb(0, 140, 255);
+	height: 35px;
 }
 
