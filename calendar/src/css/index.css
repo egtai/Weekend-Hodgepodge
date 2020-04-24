@@ -1,0 +1,40 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper{
+	width: 800px;
+	height: 100%;
+	margin: 0 auto;
+	border: 1px solid red;
+}
+
+#wrapper::after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+#lefttable{
+	float: left;
+}
+#righttable{
+	float: right;
+}
+
+td{
+	width: 33px;
+    height: 22px;
+
+}
+
+span{
+	margin-left: 50px;
+
+}
+
+#lhead,#rhead{
+	background-color: blue;
+}
+

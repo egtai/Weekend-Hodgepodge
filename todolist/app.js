@@ -32,6 +32,7 @@ var getters = {                           //可以理解相当于vue中的计算
    2.你不能直接去mutations.ADD_TODO(),这更像是事件注册 ，注册了"ADD_TODO"," TOGGLE_TODO","DELETE_TODO"三个事件,
      既然注册了事件，就需要被触发才能执行，即actions对象中的 context.commit("ADD_TODO", payload)就是触发函数
    3.context.commmit()还能传入额外的参数，即mutation的载荷（payload）,payload为对象最好，这样能包含多个字段并且记录mutation会更易读
+   4.mutations中的函数是同步的
   */    
 var mutations = {                  
     ADD_TODO: (state, payload) => {          
@@ -55,13 +56,31 @@ var mutations = {
 };
 
 //3.vuex中调用上面状态突变（mutations）的函数，可以调用多个突变函数
+    /*
+      1.action提交的mutations,而不是直接变更状态
+      2.action可以包含任意的异步操作
+      3.action函数接受一个与store实例具有相同方法和属性的context对像，因此你可以调用context.commit()
+      4.action通过storestore.dispatch('action', payload)方法去分发触发，不直接分发mutaions,这样action内部就能进行异步操作了
+    */
 var actions = {
     addTodo: (context, payload) => {          //context为上下文 ，
         context.commit("ADD_TODO", payload)   //可以理解为commmit 一个"ADD_TODO"事件
     },
-    toggleTodo: (context, payload) => {
-        context.commit("TOGGLE_TODO", payload)
-    },
+    // toggleTodo: (context, payload) => {
+    //     context.commit("TOGGLE_TODO", payload)
+    // },
+     //简化代码{commit:context.commit} 参数解构, commit=context.commit
+
+      /*
+        function a({commit}){
+            console.log(commit)
+        }
+        a({commit:context.commit})  //context.commit
+      
+      */
+      toggleTodo: ({commit}, payload) => {    
+         commit("TOGGLE_TODO", payload)
+     },
     deleteTodo: (context, payload) => {
         context.commit("DELETE_TODO", payload)
     }
