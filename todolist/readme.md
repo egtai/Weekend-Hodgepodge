@@ -8,3 +8,6 @@
   b.vuex的全部基础知识   
   
   d.es6相关语法
+
+# 3.效果图:
+！[] (https://github.com/TanQiong/Weekend-Hodgepodge/blob/master/DemoImages/01.Todolist.png?raw=true)
