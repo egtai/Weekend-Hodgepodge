@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生js实现Tab组件</title>
+    <style>
+  * {
+    margin:0;
+    border:0;
+    padding:0;
+    box-sizing:border-box;
+    list-style:none;
+  }
+  
+  body{
+    background-color: #333;
+    font-family: sans-serif;
+  }
+  
+  .tabs-container{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+  }
+  
+  .tabs-header {
+    background-color:#DFA612;
+    display:flex;
+    flex-wrap:wrap;
+    padding:.375rem;
+  }
+  
+  .tabs-header > li {
+    color:#fff;
+    cursor:pointer;
+    flex-grow:1;
+    padding:.375rem;
+    font-size:1.125rem;
+  }
+  
+  .tabs {
+    display:flex;
+  }
+  
+  .tab {
+    padding:1rem;
+    color:#fff;
+  }
+    </style>
+</head>
+<body>
+    <div class="tabs-container">
+        <!-- 一级tab按钮头部 -->
+        <ul class="tabs-header">
+            <li>Tab1</li>
+            <li class="default-tab">Tab2</li>
+            <li>Tab3</li>
+        </ul>
+        
+        <ul class="tabs">
+             <!-- tab1对应内容 -->
+            <li class="tabs-container">
+                <!-- 二级按钮 -->
+                <ul class="tabs-header">
+                    <li>tab1_1</li>
+                    <li class="default-tab">tab1_2</li>
+                </ul>
+
+                <ul class="tabs">
+                    <li class="tab">我是tab1子按钮1页面</li>
+                    <li class="tab">我是tab1子按钮2页面</li>
+                </ul>
+            </li>
+            
+              <!-- tab2对应内容 -->
+            <li class="tab">我来自tab2</li>
+
+              <!-- tab3对应内容 -->
+            <li class="tab">我来自tab3</li>
+           
+        </ul>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
