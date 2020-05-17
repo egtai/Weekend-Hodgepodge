@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现手风琴效果</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+         body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              background-image: radial-gradient(var(--secondary) 30%, var(--background) 30%);
+              background-size: 2px 3px;
+              color: var(--primary);
+             }
+        .card{
+            background-color: var(--background);
+            display: block;
+            width: 300px;
+            min-height: 90px;
+            border: 3px solid var(--primary);
+            padding: 15px;
+            /* 白色的阴影覆盖一部分其他颜色的阴影留出一个3px的边框 */
+            /* box-shadow: 10px -10px 0 -3px white,10px -10px 0 0px green,简化如下：添加死歌不同颜色的框; */
+            box-shadow:10px -10px 0 -3px var(--background),10px -10px var(--green),
+                        20px -20px 0 -3px var(--background), 20px -20px var(--yellow),
+                        30px -30px 0 -3px var(--background), 30px -30px var(--orange),
+                        40px -40px 0 -3px var(--background), 40px -40px var(--red)                
+        }
+        :root{
+            --primary:#555BFF;
+            --secondary:#22d2a0;
+            --background:white;
+            --green: #1FC11B;
+            --yellow: #FFD913;
+            --orange: #FF9C55;
+            --red: #FF5555;
+        }
+       .card p{
+           font-size: 11px;
+           letter-spacing: 0.5px;
+           margin-bottom:10px;
+       }
+       .card h2{
+           font-size :14px;
+           font-weight: normal;
+       }
+
+       /* 设置动画1归位 */
+       .card {
+           position: relative;
+           top:0;
+           left:0;
+           transition: box-shadow 1s,left 1s,top 1s;
+       }
+       .card:hover{
+           /*移动框的同时，背影框归位*/
+           box-shadow:  0px  0px 0  0 var(--background),  0px  0px var(--green),
+                        0px  0px 0  0 var(--background),  0px  0px var(--yellow),
+                        0px  0px 0  0 var(--background),  0px  0px var(--orange),
+                        0px  0px 0  0 var(--background),  0px  0px var(--red);     
+           /* 原来的框移动到红色背景框位置 */
+           top:-40px;
+           left:40px
+       }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <p>hello！</p>
+        <h2>点我归位</h2>
+    </div>
+</body>
+</html>
